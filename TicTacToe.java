@@ -78,47 +78,51 @@ class Field{
 	private char[][] field;
 	private char winner;
 
-	private int[][] playToCoords(int zug) {
+	private int[] playToCoords(int zug) {
+	
+	/* takes a number between 1 and 9 and returns the indices 	in the field array.
 
-		int[][] coords = new int[1][2];
+		playToCoords(1) for example returns 
+
+		int[] coords = new int[2];
 
 
 		switch (zug) {
 			case 1:
-				coords[0][0] = 1;
-				coords[0][1] = 0;
+				coords[0] = 1;
+				coords[1] = 0;
 				break;
 			case 2:
-				coords[0][0] = 5;
-				coords[0][1] = 0;
+				coords[0] = 5;
+				coords[1] = 0;
 				break;
 			case 3:
-				coords[0][0] = 9;
-				coords[0][1] = 0;
+				coords[0] = 9;
+				coords[1] = 0;
 				break;
 			case 4:
-				coords[0][0] = 1;
-				coords[0][1] = 2;
+				coords[0] = 1;
+				coords[1] = 2;
 				break;
 			case 5:
-				coords[0][0] = 5;
-				coords[0][1] = 2;
+				coords[0] = 5;
+				coords[1] = 2;
 				break;
 			case 6:
-				coords[0][0] = 9;
-				coords[0][1] = 2;
+				coords[0] = 9;
+				coords[1] = 2;
 				break;
 			case 7:
-				coords[0][0] = 1;
-				coords[0][1] = 4;
+				coords[0] = 1;
+				coords[1] = 4;
 				break;
 			case 8:
-				coords[0][0] = 5;
-				coords[0][1] = 4;
+				coords[0] = 5;
+				coords[1] = 4;
 				break;
 			case 9:
-				coords[0][0] = 9;
-				coords[0][1] = 4;
+				coords[0] = 9;
+				coords[1] = 4;
 				break;
 		}
 		return coords;
@@ -223,14 +227,14 @@ class Field{
 	}
 	
 	public void set(char spieler, int zug){
-		int[][] coords = this.playToCoords(zug);
-		field[coords[0][0]][coords[0][1]] = spieler;
+		int[] coords = this.playToCoords(zug);
+		field[coords[0]][coords[1]] = spieler;
 	}
 
 	public boolean isPlayPossible(int zug){
-		int[][] coords = this.playToCoords(zug);
+		int[] coords = this.playToCoords(zug);
 
-		if(field[coords[0][0]][coords[0][1]] == 'O' ||field[coords[0][0]][coords[0][1]] == 'X') {
+		if(field[coords[0]][coords[1]] == 'O' ||field[coords[0]][coords[1]] == 'X') {
 			 return false;
 		} else {
 			 return true;
