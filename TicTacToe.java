@@ -80,14 +80,9 @@ class Field{
 
 	private int[] playToCoords(int zug) {
 	
-	/* takes a number between 1 and 9 and returns the indices 	in the field array.
-
-		playToCoords(4) for example returns [1, 2]
-	*/
-
+	// takes a number between 1 and 9 and returns the indices in the field array.
+	
 		int[] coords = new int[2];
-
-
 		switch (zug) {
 			case 1:
 				coords[0] = 1;
@@ -132,7 +127,7 @@ class Field{
 	public void initField(){
 		/*
 		 *	j
-		 * i  012345678910
+		 *    i   012345678910
 		 * 	0  1 | 2 | 3
 		 * 	1 ---+---+---
 		 * 	2  4 | 5 | 6
