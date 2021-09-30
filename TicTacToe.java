@@ -82,7 +82,8 @@ class Field{
 	
 	/* takes a number between 1 and 9 and returns the indices 	in the field array.
 
-		playToCoords(1) for example returns 
+		playToCoords(4) for example returns [1, 2]
+	*/
 
 		int[] coords = new int[2];
 
