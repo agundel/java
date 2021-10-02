@@ -12,16 +12,8 @@ class TicTacToe{
 		field.initField();
 
 		while (count <= 10) {
-			System.out.println("##########################");
-			System.out.println("Zug Nr. " + count);
-			if (count % 2 == 0) {
-				System.out.println("Spieler X ist an der Reihe.");
-			} else {
-				System.out.println("Spieler O ist an der Reihe.");
-			}
-			System.out.println("Aktuelles Spielfeld:");
-			field.printField();
-			System.out.println("Wähle ein freies Feld:");
+
+
 
 			if (field.isGameWon()) {
 				System.out.println("###########################");
@@ -33,6 +25,16 @@ class TicTacToe{
 				return;
 			} else {
 				try {
+					System.out.println("##########################");
+					System.out.println("Zug Nr. " + count);
+					if (count % 2 == 0) {
+						System.out.println("Spieler X ist an der Reihe.");
+					} else {
+						System.out.println("Spieler O ist an der Reihe.");
+					}
+					System.out.println("Aktuelles Spielfeld:");
+					field.printField();
+					System.out.println("Wähle ein freies Feld:");
 					zug = scanner.nextInt();
 					if (zug > 0 && zug <= 9) {
 
@@ -78,56 +80,10 @@ class Field{
 	private char[][] field;
 	private char winner;
 
-	private int[] playToCoords(int zug) {
-	
-	// takes a number between 1 and 9 and returns the indices in the field array.
-	
-		int[] coords = new int[2];
-		switch (zug) {
-			case 1:
-				coords[0] = 1;
-				coords[1] = 0;
-				break;
-			case 2:
-				coords[0] = 5;
-				coords[1] = 0;
-				break;
-			case 3:
-				coords[0] = 9;
-				coords[1] = 0;
-				break;
-			case 4:
-				coords[0] = 1;
-				coords[1] = 2;
-				break;
-			case 5:
-				coords[0] = 5;
-				coords[1] = 2;
-				break;
-			case 6:
-				coords[0] = 9;
-				coords[1] = 2;
-				break;
-			case 7:
-				coords[0] = 1;
-				coords[1] = 4;
-				break;
-			case 8:
-				coords[0] = 5;
-				coords[1] = 4;
-				break;
-			case 9:
-				coords[0] = 9;
-				coords[1] = 4;
-				break;
-		}
-		return coords;
-	}
-
 	public void initField(){
 		/*
 		 *	j
-		 *    i   012345678910
+		 * i  012345678910
 		 * 	0  1 | 2 | 3
 		 * 	1 ---+---+---
 		 * 	2  4 | 5 | 6
@@ -172,6 +128,62 @@ class Field{
 		field[9][4] = '9';
 	}
 
+	public void printField() {
+		for(int i = 0; i < field[0].length; i++) {
+			for(int j = 0; j<field.length; j++) {
+				System.out.print(field[j][i]);
+			}
+			System.out.print("\n");
+		}
+		System.out.print("\n");
+	}
+
+	private int[] playToCoords(int zug) {
+
+		int[] coords = new int[2];
+
+
+		switch (zug) {
+			case 1:
+				coords[0] = 1;
+				coords[1] = 0;
+				break;
+			case 2:
+				coords[0] = 5;
+				coords[1] = 0;
+				break;
+			case 3:
+				coords[0] = 9;
+				coords[1] = 0;
+				break;
+			case 4:
+				coords[0] = 1;
+				coords[1] = 2;
+				break;
+			case 5:
+				coords[0] = 5;
+				coords[1] = 2;
+				break;
+			case 6:
+				coords[0] = 9;
+				coords[1] = 2;
+				break;
+			case 7:
+				coords[0] = 1;
+				coords[1] = 4;
+				break;
+			case 8:
+				coords[0] = 5;
+				coords[1] = 4;
+				break;
+			case 9:
+				coords[0] = 9;
+				coords[1] = 4;
+				break;
+		}
+		return coords;
+	}
+
 	public boolean isGameWon(){
 		if(field[1][0] == field[5][0] && field[1][0]== field[9][0]) {
 			winner = field[1][0];
@@ -212,15 +224,7 @@ class Field{
 		return winner;
 	}
 
-	public void printField() {
-		for(int i = 0; i < field[0].length; i++) {
-			for(int j = 0; j<field.length; j++) {
-				System.out.print(field[j][i]);
-			}
-			System.out.print("\n");
-		}
-		System.out.print("\n");
-	}
+
 	
 	public void set(char spieler, int zug){
 		int[] coords = this.playToCoords(zug);
